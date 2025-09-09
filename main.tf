@@ -51,6 +51,15 @@ resource "aws_vpc_security_group_ingress_rule" "allow_http_and_https" {
   cidr_ipv4   = "0.0.0.0/0"
   from_port   = 80
   ip_protocol = "tcp"
+  to_port     = 443
+}
+
+resource "aws_vpc_security_group_ingress_rule" "allow_port_3000" {
+  security_group_id = aws_security_group.sg.id
+
+  cidr_ipv4   = "0.0.0.0/0"
+  from_port   = 3000
+  ip_protocol = "tcp"
   to_port     = 3000
 }
 
